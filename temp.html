@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Aisha! 🎉</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #ffccff, #ff99cc);
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #ff3399;
+            text-shadow: 3px 3px 10px rgba(255, 0, 128, 0.7);
+            animation: bounce 1.5s infinite alternate, glow 1.5s infinite alternate;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 3px 3px 15px rgba(255, 0, 128, 0.9); }
+            100% { text-shadow: 3px 3px 25px rgba(255, 255, 0, 0.8); }
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #99004d;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out 1s forwards;
+            opacity: 0;
+        }
+
+        button {
+            background-color: #ff6699;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 20px;
+            box-shadow: 0px 5px 15px rgba(255, 105, 180, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff3366;
+            transform: scale(1.1);
+            box-shadow: 0px 8px 20px rgba(255, 0, 128, 0.8);
+        }
+
+        #surprise {
+            display: none;
+            font-size: 2em;
+            color: #ff0066;
+            font-weight: bold;
+            text-shadow: 3px 3px 10px rgba(255, 0, 128, 0.7);
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            transform: scale(0.8);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .balloons {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            animation: floatUp 5s infinite ease-in-out;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ffcc00;
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkleAnim 2s infinite ease-in-out;
+        }
+
+        @keyframes sparkleAnim {
+            0% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(0.5); }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 Happy Birthday Aisha! 🎂🎁🎈</h1>
+    <p>Wishing you a day filled with love, laughter, and lots of cake! 🍰🎊</p>
+    <div class="buttons">
+        <button onclick="showSurprise();">🎁 Open Your Gift</button>
+    </div>
+    <audio id="audio" src="happy-birthday-155461.mp3"></audio>
+    <p id="surprise">🎊 Surprise, Aisha! Happy Birthday!!! 🎉 You’re the best sis ever! 💖✨</p>
+    
+    <div class="balloons"></div>
+
+    <script>
+        song = document.getElementById("audio");
+        function showSurprise() {
+            const surpriseText = document.getElementById("surprise");
+            surpriseText.style.display = "block";
+            setTimeout(() => {
+                surpriseText.style.opacity = "1";
+                surpriseText.style.transform = "scale(1)";
+            }, 100);
+            audio.play();
+            createBalloons();
+            createSparkles();
+        }
+
+        function createBalloons() {
+            const colors = ["#ff0000", "#ff8800", "#ffcc00", "#00cc00", "#00aaff", "#cc00ff"];
+            const balloonContainer = document.querySelector(".balloons");
+            for (let i = 0; i < 25; i++) {
+                let balloon = document.createElement("div");
+                balloon.classList.add("balloon");
+                balloon.style.width = Math.random() * 40 + 50 + "px";
+                balloon.style.height = Math.random() * 60 + 70 + "px";
+                balloon.style.borderRadius = "50%";
+                balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                balloon.style.left = Math.random() * 100 + "vw";
+                balloon.style.animationDuration = (4 + Math.random() * 3) + "s";
+                balloonContainer.appendChild(balloon);
+            }
+        }
+
+        function createSparkles() {
+            for (let i = 0; i < 20; i++) {
+                let sparkle = document.createElement("div");
+                sparkle.classList.add("sparkle");
+                sparkle.style.left = Math.random() * 100 + "vw";
+                sparkle.style.top = Math.random() * 100 + "vh";
+                sparkle.style.animationDuration = (1 + Math.random() * 2) + "s";
+                document.body.appendChild(sparkle);
+            }
+        }
+    </script>
+</body>
+</html>
